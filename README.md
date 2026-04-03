@@ -23,7 +23,7 @@ This makes it a flexible and reusable data-handling module in digital systems.
 
 ## Architecture
 
-![Universal Shift Register - Logisim Implementation](docs/USR_logisim.png)
+![USR-Logisim Implementation](DOCS/USR_logisim.png)
 
 - Implemented in Logisim using D Flip-Flops and multiplexers  
 - Each stage consists of a D flip-flop for storage  
@@ -130,4 +130,4 @@ The testbench verifies the following operations:
 Waveform analysis confirms correct shifting and data loading behavior.  
 Design verified successfully across all tested parameter configurations.
 
-![Shift Register Waveform](docs/waveforms/USR_waveform.png)
+![USR Waveform](DOCS/waveforms/USR_waveform.png)
