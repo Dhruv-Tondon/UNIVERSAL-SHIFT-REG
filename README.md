@@ -85,3 +85,49 @@ Particular care is taken to avoid:
 - Bit misalignment  
 - Incorrect clock-edge shifting  
 - Silent data corruption bugs  
+
+## Design Choice: Parameterized Shift Register
+
+The shift register is designed using a parameterized width (N) to make the module scalable and reusable.  
+This allows the same design to be used for different bit-widths (e.g., 4-bit, 8-bit, 16-bit) without modifying the core logic.  
+It improves modularity and reduces code duplication in larger digital systems.
+
+---
+
+## Module Declaration
+
+```verilog
+module paraunivshiftreg #(parameter N=4) (
+    input reset, l_ser_in, r_ser_in, clk,
+    input [N-1:0] para_in,
+    input [1:0] sel,
+    output reg [N-1:0] out
+);
+```
+---
+
+## Testbench Coverage
+
+The testbench verifies the following operations:
+
+- Reset functionality (output cleared)  
+- Parallel load operation  
+- Hold condition (no change in output)  
+- Shift right operation (serial input from left)  
+- Shift left operation (serial input from right)  
+- Continuous shifting with varying serial inputs  
+
+---
+
+## Results
+
+- All modes of operation behave as expected  
+- Output transitions correctly on clock edges  
+- No data corruption observed during shifting  
+- Design works reliably for parameterized width (N)  
+
+## Waveform
+Waveform analysis confirms correct shifting and data loading behavior.  
+Design verified successfully across all tested parameter configurations.
+
+![Shift Register Waveform](docs/waveforms/USR_waveform.png)
